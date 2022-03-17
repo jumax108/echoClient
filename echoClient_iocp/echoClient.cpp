@@ -30,9 +30,6 @@ void CEchoClient::OnRecv(CPacketPointer packet){
 
 	if(echoData == data){
 		
-		printf("sendData: %d, recvData: %d\n", echoData, data);
-		Sleep(1000);
-
 		echoData += 1;
 		CPacketPtr_Lan packet;
 		packet << echoData;
@@ -47,7 +44,7 @@ void CEchoClient::OnRecv(CPacketPointer packet){
 }
 
 void CEchoClient::OnSend(int sendSize){
-	printf("sent\n");
+	int a= 1;
 }
 
 void CEchoClient::OnError(int errorCode, const wchar_t* errorMsg){

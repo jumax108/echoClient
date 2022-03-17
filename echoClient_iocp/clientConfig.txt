@@ -1,0 +1,21 @@
+Connection {
+
+   ip : "127.0.0.1"
+   port : 6000
+
+}
+
+NetworkModel {
+
+   maxSendPacketNum : 100
+   workerThreadNum : 2
+   onNagle : 0
+
+}
+
+Echo {
+
+   overSend : 100
+   delay : 0
+
+}
