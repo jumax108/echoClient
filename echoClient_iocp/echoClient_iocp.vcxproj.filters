@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="stack">
+      <UniqueIdentifier>{c56ad308-1aa6-40fc-b435-1124ffeca311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="queue">
+      <UniqueIdentifier>{66de7194-e8b8-46e0-93a1-7a6f343a82f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objectFreeList">
+      <UniqueIdentifier>{3698cbf5-ff19-4531-aa89-e33e0994a9b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objectFreeListTLS">
+      <UniqueIdentifier>{253bedb1-5859-4761-a69d-fa2f41a7327f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -25,6 +37,18 @@
   <ItemGroup>
     <ClInclude Include="headers\echoClient.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\objectFreeListTLS\headers\common.h">
+      <Filter>objectFreeListTLS</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\objectFreeList\headers\common.h">
+      <Filter>objectFreeList</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\queue\headers\common.h">
+      <Filter>queue</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\stack\headers\common.h">
+      <Filter>stack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

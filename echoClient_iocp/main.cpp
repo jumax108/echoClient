@@ -15,9 +15,10 @@ int main(){
 	parser.setNameSpace("Connection");
 	parser.getTextByKey("ip", ipSingleByte, 20, &ipLen);
 	parser.getIntByKey("port", &port);
+	parser.resetNameSpace(); 
+
 	size_t convertSize;
 	mbstowcs_s(&convertSize, ip, ipSingleByte, 20);
-	parser.resetNameSpace();
 
 	int maxSendPacketNum;
 	int workerThreadNum;
@@ -28,7 +29,12 @@ int main(){
 	parser.getIntByKey("onNagle", &onNagle);
 	parser.resetNameSpace();
 
-	CEchoClient echoClient;
+	int overSend;
+	parser.setNameSpace("Echo");
+	parser.getIntByKey("overSend", &overSend);
+	parser.resetNameSpace();
+
+	CEchoClient echoClient(overSend, 0);
 
 	echoClient.Connect(ip, port, maxSendPacketNum, workerThreadNum, onNagle);
 

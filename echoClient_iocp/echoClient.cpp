@@ -1,19 +1,27 @@
 #include "headers/echoClient.h"
 
-CEchoClient::CEchoClient(){
+CEchoClient::CEchoClient(int sendNum, int delay){
 
-	echoData = 0;
+	_echoSendData = 0;
+	_echoRecvData = 0;
 
+	_sendNum = sendNum;
+	_delay = delay;
 }
 
 void CEchoClient::OnEnterJoinServer(){
 
 	printf("join server\n");
 
-	CPacketPtr_Lan packet;
-	packet << echoData;
+	
+	for(int sendCnt = 0; sendCnt < _sendNum; ++sendCnt){
 
-	sendPacket(packet);
+		CPacketPtr_Lan packet;
+		packet << _echoSendData;
+		_echoSendData += 1;
+
+		sendPacket(packet);
+	}
 
 }
 
@@ -23,28 +31,34 @@ void CEchoClient::OnLeaveServer(){
 
 }
 
-void CEchoClient::OnRecv(CPacketPointer packet){
+void CEchoClient::OnRecv(CPacketPtr_Lan packet){
 
-	int data;
+	unsigned __int64 data;
 	packet >> data;
 
-	if(echoData == data){
+	if(_echoRecvData == data){
 		
-		echoData += 1;
+		_echoRecvData += 1;
+
 		CPacketPtr_Lan packet;
-		packet << echoData;
+		packet << _echoSendData;
+		_echoSendData += 1;
 		
+
 		sendPacket(packet);
 
 	} else {
-		printf("error: sendData: %d, recvData: %d\n", echoData, data);
+		printf("error: sendData: %d, recvData: %d\n", _echoRecvData, data);
+		CDump::crash();
 	}
 
 
 }
 
 void CEchoClient::OnSend(int sendSize){
-	int a= 1;
+	if(_delay > 0){
+		Sleep(_delay);
+	}
 }
 
 void CEchoClient::OnError(int errorCode, const wchar_t* errorMsg){

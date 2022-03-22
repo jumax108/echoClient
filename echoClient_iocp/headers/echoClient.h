@@ -12,17 +12,22 @@
 class CEchoClient: public CLanClient{
 
 public:
-	CEchoClient();
+	CEchoClient(int sendNum, int delay);
 
 	void OnEnterJoinServer();
 	void OnLeaveServer();
 
-	void OnRecv(CPacketPointer packet);
+	void OnRecv(CPacketPtr_Lan packet);
 	void OnSend(int sendSize);
 
 	void OnError(int errorCode, const wchar_t* errorMsg);
 
 private:
-	int echoData;
+
+	unsigned __int64 _echoSendData;
+	unsigned __int64 _echoRecvData;
+	int _sendNum;
+
+	int _delay;
 
 };

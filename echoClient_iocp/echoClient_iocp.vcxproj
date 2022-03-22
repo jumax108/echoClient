@@ -150,6 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\echoClient.h" />
+    <ClInclude Include="lib\objectFreeListTLS\headers\common.h" />
+    <ClInclude Include="lib\objectFreeList\headers\common.h" />
+    <ClInclude Include="lib\queue\headers\common.h" />
+    <ClInclude Include="lib\stack\headers\common.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
