@@ -34,9 +34,15 @@ int main(){
 	parser.getIntByKey("overSend", &overSend);
 	parser.resetNameSpace();
 
-	CEchoClient echoClient(overSend, 0);
+	CEchoClient echoClient(100, 0, true, 100, maxSendPacketNum, workerThreadNum);
 
-	echoClient.Connect(ip, port, maxSendPacketNum, workerThreadNum, onNagle);
+	echoClient._ip = ip;
+	echoClient._port = port;
+	echoClient._maxSendPacketNum = maxSendPacketNum;
+	echoClient._workerThreadNum = workerThreadNum;
+	echoClient._onNagle = onNagle;
+
+	echoClient.Connect(ip, port, onNagle);
 
 	for(;;){
 		

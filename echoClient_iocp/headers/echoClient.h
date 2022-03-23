@@ -1,6 +1,7 @@
 #pragma once
 #define WIN32_LEAN_AND_MEAN
 #include <stdio.h>
+#include <time.h>
 
 #include "objectFreeListTLS/headers/objectFreeListTLS.h"
 #include "stack/headers/stack.h"
@@ -12,7 +13,8 @@
 class CEchoClient: public CLanClient{
 
 public:
-	CEchoClient(int sendNum, int delay);
+
+	CEchoClient(int sendNum, int delay, bool beReconnect, int reconnectRatio, int maxPacketNum, int workerThreadNum);
 
 	void OnEnterJoinServer();
 	void OnLeaveServer();
@@ -26,8 +28,23 @@ private:
 
 	unsigned __int64 _echoSendData;
 	unsigned __int64 _echoRecvData;
+	
 	int _sendNum;
-
 	int _delay;
+
+	int _reconnectRatio;
+	unsigned int _randSeed;
+	bool _beReconnect;
+
+	bool _requestDisconnect;
+
+public:
+
+	wchar_t* _ip;
+	unsigned short _port;
+	int _maxSendPacketNum;
+	int _workerThreadNum;
+	bool _onNagle;
+
 
 };
