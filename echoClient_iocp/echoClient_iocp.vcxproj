@@ -151,8 +151,11 @@
   <ItemGroup>
     <ClInclude Include="headers\echoClient.h" />
     <ClInclude Include="lib\objectFreeListTLS\headers\common.h" />
+    <ClInclude Include="lib\objectFreeListTLS\headers\objectFreeListTLS.h" />
     <ClInclude Include="lib\objectFreeList\headers\common.h" />
+    <ClInclude Include="lib\objectFreeList\headers\objectFreeList.h" />
     <ClInclude Include="lib\queue\headers\common.h" />
+    <ClInclude Include="lib\queue\headers\queue.h" />
     <ClInclude Include="lib\stack\headers\common.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

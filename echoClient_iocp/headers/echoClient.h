@@ -14,7 +14,9 @@ class CEchoClient: public CLanClient{
 
 public:
 
-	CEchoClient(int sendNum, int delay, bool beReconnect, int reconnectRatio, int maxPacketNum, int workerThreadNum);
+	CEchoClient(wchar_t* ip, unsigned short port, bool onNagle,
+		int sendNum, int delay, bool beReconnect, int reconnectRatio,
+		int maxPacketNum, int workerThreadNum);
 
 	void OnEnterJoinServer();
 	void OnLeaveServer();
@@ -35,8 +37,8 @@ private:
 	int _reconnectRatio;
 	unsigned int _randSeed;
 	bool _beReconnect;
-
-	bool _requestDisconnect;
+	
+	bool _requestDisconnect; 
 
 public:
 
@@ -45,6 +47,5 @@ public:
 	int _maxSendPacketNum;
 	int _workerThreadNum;
 	bool _onNagle;
-
 
 };

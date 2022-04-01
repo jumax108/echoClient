@@ -3,6 +3,8 @@
 #include "textParser/headers/textParser.h"
 #pragma comment(lib, "lib/textParser/textParser")
 
+CDump dump;
+
 int main(){
 
 	CTextParser parser("clientConfig.txt");
@@ -34,7 +36,7 @@ int main(){
 	parser.getIntByKey("overSend", &overSend);
 	parser.resetNameSpace();
 
-	CEchoClient echoClient(100, 0, true, 100, maxSendPacketNum, workerThreadNum);
+	CEchoClient echoClient(ip, port, onNagle, 100, 0, true, 10, maxSendPacketNum, workerThreadNum);
 
 	echoClient._ip = ip;
 	echoClient._port = port;
@@ -42,17 +44,20 @@ int main(){
 	echoClient._workerThreadNum = workerThreadNum;
 	echoClient._onNagle = onNagle;
 
-	echoClient.Connect(ip, port, onNagle);
+	echoClient.requestConnect();
 
 	for(;;){
 		
 		printf("recv TPS: %d\n", echoClient.getRecvTPS());
 		printf("send TPS: %d\n", echoClient.getSendTPS());
 		printf("packet pool: %I64d Chunks\n\n", CPacketPtr_Lan::getPacketPoolUsage());
-
-		Sleep(1000);
+		
+		Sleep (1000);
 
 	}
+
+	system("PAUSE");
+
 
 	return 0;
 
