@@ -109,7 +109,7 @@ CObjectFreeListTLS<T>::CObjectFreeListTLS(bool runConstructor, bool runDestructo
 
 	#if defined(OBJECT_FREE_LIST_TLS_DEBUG)
 
-		_heap = HeapCreate(HEAP_GENERATE_EXCEPTIONS, 0, 0);
+		_heap = HeapCreate(0, 0, 0);
 	
 		_chunkListIndex = 0;
 
